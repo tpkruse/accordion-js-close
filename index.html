@@ -93,17 +93,15 @@ const accordion = new Accordion(containers, {
 const containers_open = Array.from(document.querySelectorAll('.accordion-container-open'));
 const accordion_open = new Accordion(containers_open, {
    openOnInit: [0],
-   onOpen: function(currentElement) {
      onOpen: function (element) {
-       const closeBtn = element.querySelector("#close-acc");
-       closeBtn.onclick = () => {
-         //use this
-         accordion[element.id.split("-")[1]].close(0);
-         //Another option
-         //accordion[element.id.split("-")[1]].closeAll();
-       };
-     },
-  }
+    const closeBtn = element.querySelector("#close-acc");
+    closeBtn.onclick = () => {
+      //use this
+      accordion[element.id.split("-")[1]].close(0);
+      //Another option
+      //accordion[element.id.split("-")[1]].closeAll();
+    };
+  },
   });
 </script>
 
