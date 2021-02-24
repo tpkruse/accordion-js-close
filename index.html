@@ -47,7 +47,7 @@
   </div>
 </div>
 
-<div class="accordion-container">
+<div class="accordion-container-open">
   <div class="ac">
     <h2 class="ac-header">
       <button class="ac-trigger">Lorem ipsum dolor sit amet.</button>
@@ -60,7 +60,7 @@
   </div>
 </div>
 
-<div class="accordion-container">
+<div class="accordion-container-open">
   <div class="ac">
     <h2 class="ac-header">
       <button class="ac-trigger">Lorem ipsum dolor sit amet.</button>
@@ -76,11 +76,35 @@
 <script src="https://unpkg.com/accordion-js@3.1.1/dist/accordion.min.js"></script>
 
 <script>
-  const containers = Array.from(document.querySelectorAll('.accordion-container'));
-  const accordion = new Accordion(containers, {
-  onOpen: function() {
-  }
+
+const containers = Array.from(document.querySelectorAll('.accordion-container'));
+const accordion = new Accordion(containers, {
+  onOpen: function (element) {
+    const closeBtn = element.querySelector("#close-acc");
+    closeBtn.onclick = () => {
+      //use this
+      accordion[element.id.split("-")[1]].close(0);
+      //Another option
+      //accordion[element.id.split("-")[1]].closeAll();
+    };
+  },
  });
+
+const containers_open = Array.from(document.querySelectorAll('.accordion-container-open'));
+const accordion_open = new Accordion(containers_open, {
+   openOnInit: [0],
+   onOpen: function(currentElement) {
+     onOpen: function (element) {
+       const closeBtn = element.querySelector("#close-acc");
+       closeBtn.onclick = () => {
+         //use this
+         accordion[element.id.split("-")[1]].close(0);
+         //Another option
+         //accordion[element.id.split("-")[1]].closeAll();
+       };
+     },
+  }
+  });
 </script>
 
 </body>
